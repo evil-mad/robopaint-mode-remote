@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "release": "0.9.6",
+    "target": "de",
+    "creator": "techninja via GoogleTranslate"
+  },
+  "info": {
+    "title": "Remote Print",
+    "word": "Fern",
+    "description": "Remote-Druckmodus: Schieben Sie Ihre Zeichnungen!"
+  },
+  "control": {
+    "title": "Fernsteuerung Farbe",
+    "subtitle": "Kontrolle"
+  },
+  "queue": {
+    "name": "Name",
+    "title": "Remote Queue Farbe",
+    "added": "Zeitstempel",
+    "status": "Status",
+    "settings": "Einstellungen",
+    "preview": "Vorschau",
+    "na": "Keine Angesichts",
+    "itemStatus": {
+      "waiting": "Warten",
+      "cancelled": "Abgesagt",
+      "complete": "Vollständige",
+      "printing": "Drucken"
+    }
+  },
+  "button": {
+    "ready": "Druckbereit?",
+    "noreset": "Bereitschaft nicht zurücksetzen",
+    "readytitle": "Aktivieren Sie diese Option, wenn Sie bereit sind, die Verarbeitung der Druckerwarteschlange zu starten sind.",
+    "noresettitle": "Wenn aktiviert, wird die Bereitschaft Kontrollkästchen oben werden nicht nach einem Druck zurückgesetzt werden, ermöglicht sofortige Queue-Verarbeitung."
+  },
+  "status": {
+    "cancelled": "Remote-Druck-Spooling und Drucken abgebrochen."
+  }
+}

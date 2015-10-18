@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "release": "0.9.6",
+    "target": "pt",
+    "creator": "techninja via GoogleTranslate"
+  },
+  "info": {
+    "title": "Remote Print",
+    "description": "Modo de impressão remota: Empurre seus desenhos!",
+    "word": "Controlo remoto"
+  },
+  "control": {
+    "subtitle": "Ao controle",
+    "title": "Controle remoto de pintura"
+  },
+  "queue": {
+    "title": "Fila de pintura remoto",
+    "name": "Nome",
+    "status": "Estatuto",
+    "added": "Timestamp",
+    "settings": "Configurações",
+    "na": "Nenhum Dado",
+    "itemStatus": {
+      "cancelled": "Cancelado",
+      "complete": "Completo",
+      "waiting": "Esperando",
+      "printing": "Impressão"
+    },
+    "preview": "Visualização"
+  },
+  "button": {
+    "ready": "Pronto para imprimir?",
+    "noreset": "Não reponha prontidão",
+    "readytitle": "Habilite esta quando você estiver pronto para começar a processar a fila de impressão.",
+    "noresettitle": "Se ativado, checkbox prontidão acima não serão reiniciadas após uma impressão, permite o processamento de fila imediato."
+  },
+  "status": {
+    "cancelled": "Spool de impressão remota e de impressão cancelado."
+  }
+}

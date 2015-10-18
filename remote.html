@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="remote.js"></script>
+    <link rel="stylesheet" href="remote.css">
+  </head>
+<body>
+
+  <fieldset id="control">
+    <legend data-i18n>modes.remote.control.title</legend>
+    <fieldset id="buttons">
+      <legend data-i18n>modes.remote.control.subtitle</legend>
+      <div id="button-right">
+        <button id="pause" class="ready" disabled data-i18n="common.action.pause"></button>
+        <button id="cancel" disabled="disabled" data-i18n="[title]common.action.canceltitle;common.action.cancel"></button>
+      </div>
+      <div id="ready-wrapper" data-i18n="[title]modes.remote.button.readytitle">
+        <label for="ready" data-i18n>modes.remote.button.ready</label>
+        <input id="ready" type="checkbox" class="fancy">
+      </div>
+      <div id="noreset-wrapper" data-i18n="[title]modes.remote.button.noresettitle">
+        <input id="noreset" type="checkbox" class="fancy">
+        <label for="noreset" data-i18n>modes.remote.button.noreset</label>
+      </div>
+      <button id="pen" class="normal" data-i18n>common.action.brush.lower</button>
+      <button id="park" class="normal" data-i18n="[title]common.action.parktitle;common.action.park"></button>
+      <button id="disable" class="normal" data-i18n="[title]common.action.disabletitle;common.action.disable"></button>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n>modes.remote.queue.title</legend>
+      <table id="queue">
+        <thead>
+          <tr>
+            <th class="id" data-i18n>#</th>
+            <th class="name" data-i18n>modes.remote.queue.name</th>
+            <th class="status" data-i18n>modes.remote.queue.status</th>
+            <th class="time" data-i18n>modes.remote.queue.added</th>
+            <th class="settings" data-i18n>modes.remote.queue.settings</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </fieldset>
+  </fieldset>
+
+  <div id="paper-placeholder"/>
+
+</body>
+</html>

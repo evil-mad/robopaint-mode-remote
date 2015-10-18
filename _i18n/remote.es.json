@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "release": "0.9.6",
+    "target": "es",
+    "creator": "techninja via GoogleTranslate"
+  },
+  "info": {
+    "title": "Imprimir remoto",
+    "description": "Modo de impresión remota: Empuje sus dibujos!",
+    "word": "Remoto"
+  },
+  "control": {
+    "title": "Control remoto de pintura",
+    "subtitle": "Control"
+  },
+  "queue": {
+    "title": "Cola de pintura remoto",
+    "name": "Nombre",
+    "settings": "Ajustes",
+    "added": "Marca de tiempo",
+    "status": "Estado",
+    "itemStatus": {
+      "waiting": "Esperando",
+      "complete": "Completa",
+      "printing": "Impresión",
+      "cancelled": "Cancelado"
+    },
+    "na": "Ninguno Dada",
+    "preview": "Vista previa"
+  },
+  "button": {
+    "ready": "¿Listo para imprimir?",
+    "noreset": "No restablezca disposición",
+    "readytitle": "Habilitar esto cuando usted está listo para comenzar a procesar la cola de impresión.",
+    "noresettitle": "Si se activa, casilla disposición anterior no se reiniciará después de una impresión, permite el procesamiento de colas inmediata."
+  },
+  "status": {
+    "cancelled": "Cola de impresión remota y la impresión cancelados."
+  }
+}

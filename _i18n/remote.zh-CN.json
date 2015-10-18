@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "release": "0.9.6",
+    "target": "zh-CN",
+    "creator": "techninja via GoogleTranslate"
+  },
+  "info": {
+    "title": "远程打印",
+    "description": "远程打印模式：按您的图纸！",
+    "word": "遥远"
+  },
+  "control": {
+    "title": "远程油漆控制",
+    "subtitle": "控制"
+  },
+  "queue": {
+    "title": "远程油漆队列",
+    "name": "命名",
+    "status": "状态",
+    "added": "时间戳",
+    "settings": "设置",
+    "preview": "预习",
+    "itemStatus": {
+      "cancelled": "取消",
+      "waiting": "等待",
+      "complete": "完成",
+      "printing": "打印"
+    },
+    "na": "没有考虑"
+  },
+  "button": {
+    "ready": "准备打印？",
+    "noreset": "不复位就绪",
+    "readytitle": "启用此当你准备好开始处理打印队列。",
+    "noresettitle": "如果启用，准备复选框，上面会不会以后打印复位，就可以立即队列处理。"
+  },
+  "status": {
+    "cancelled": "远程打印后台处理和打印取消。"
+  }
+}

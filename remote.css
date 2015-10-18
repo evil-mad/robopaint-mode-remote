@@ -1,0 +1,250 @@
+@charset "UTF-8";
+/*
+  @file Holds ALL styles for Automatic Print Mode
+*/
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-image:url('images/robots.gif');
+}
+
+/* Nav Controls & Button Graphics */
+fieldset#control {
+  background-color: rgba(255,255,255, 0.9);
+  border: 1px solid #C9A165;
+  border-radius: 0.5em 0.5em 0.5em 0.5em;
+  box-shadow: 0 0 8px 2px #EBC089 inset, 1px 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 0.75em 0;
+  position: absolute;
+  right: 1em;
+  width: 14em;
+  margin-top: 1em;
+  -webkit-transform-origin: right top;
+  padding-bottom: 0;
+}
+
+#control > legend {
+  color: white;
+}
+
+#control button {
+  display: block;
+  float: left;
+}
+
+#control h2 {
+  font-size: 1em;
+  margin: 0 0 0.5em;
+  text-shadow: 0 2px 1px #EEEEEE;
+}
+
+#control button:hover {
+  -webkit-animation-name: hover-button;
+  -webkit-animation-duration: 3000ms;
+  -webkit-animation-iteration-count: infinite;
+}
+
+#control fieldset {
+  padding: 0 7px 7px;
+  border: 0;
+  border-top: 1px solid #C9A165;
+  margin: 0.5em 0;
+}
+
+#control fieldset legend {
+  font-size: 0.9em;
+  text-align: left;
+  font-weight: bold;
+}
+
+#control div.check-control {
+  float: left;
+  margin-bottom: 0.6em;
+  margin-bottom: 0.25em;
+}
+
+/* Giant Ready Switch */
+#ready-wrapper, #noreset-wrapper, #button-right {
+  width: 220px;
+}
+
+#ready-wrapper {
+  font-size: 2em;
+  text-align: center;
+  float: left;
+}
+
+#ready-wrapper label {
+  font-size: 0.8em;
+  display: block;
+}
+
+#ready-wrapper div {
+  margin: 7px;
+}
+
+#noreset-wrapper {
+  float: left;
+  clear: left;
+}
+
+#button-right {
+  float: right;
+}
+
+#pen {
+  clear: both;
+}
+
+/* Remote Queue */
+#queue {
+  width: 450px;
+  background-color: rgba(210, 210, 210, 0.9);
+}
+
+#queue .id {width: 30px}
+#queue .name {width: 70px}
+#queue .status {width: 93px;}
+#queue .time {width: 90px;}
+#queue .settings {width: 120px;}
+
+#queue tbody, thead {
+  display: block;
+}
+
+#queue tr:nth-child(even) {
+  background-color: rgb(207, 202, 204);
+}
+
+#queue tr:nth-child(odd) {
+  background-color: white;
+}
+
+#queue tbody {
+  height: 140px;
+  font-size: 0.8em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#queue tbody img {
+  width: 50px;
+}
+
+#queue tbody .settings {
+  height: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+#queue tbody .settings span {
+  white-space: nowrap;
+  display: block;
+}
+
+#queue td {
+  text-align: center;
+}
+
+#queue td.name span {
+  overflow:hidden;
+  display: block;
+  width: 70px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Auto print buttons */
+fieldset#control {
+  top: 20px;
+}
+
+#control > legend {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.2em;
+  position: absolute;
+  top: 1px;
+  text-align: center;
+  margin-top: -28px;
+}
+
+#buttons {
+  margin-top: -9px;
+  padding-top: 5px;
+  margin-bottom: 6px;
+}
+
+/* Control panel specific button adjustments */
+#buttons button.normal {
+  font-size: 1.1em;
+  margin: 0.2em 5px;
+  display: block;
+  width: 140px;
+}
+
+#control #pause {
+  background: linear-gradient(to bottom, #eff7f9 0%,rgb(249, 234, 239) 50%,rgb(242, 218, 230) 51%,rgb(249, 229, 231) 100%);
+  border-radius: 11px;
+  box-shadow: 0 0 14px 6px rgba(255,0,0,0.5);
+  float: none;
+  margin: 0.5em auto;
+  display: block;
+  height: 1.9em;
+  width: 5em;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#control #pause.ready {
+  box-shadow: 0 0 14px 6px rgba(0,255,0,0.5);
+  background: linear-gradient(to bottom, #eff7f9 0%,rgb(236, 249, 234) 50%,rgb(190, 250, 185) 51%,rgb(189, 245, 180) 100%);
+}
+
+#control #pause:disabled {
+  box-shadow: 0 0 14px 6px rgba(155, 155, 155, 0.5);
+  background: linear-gradient(to bottom, #ECECEC 0%,rgb(238, 238, 238) 50%,rgb(236, 236, 236) 51%,rgb(173, 173, 173) 100%);
+}
+
+#control #pause:hover {
+  box-shadow: 0 0 14px 10px rgba(255,0,0,1);
+  -webkit-animation: none;
+}
+
+#control #pause.active {
+  background: linear-gradient(to bottom, #eff7f9 0%,rgb(236, 249, 234) 50%,rgb(190, 250, 185) 51%,rgb(189, 245, 180) 100%);
+  box-shadow: 0 0 14px 6px #04aa1e;
+
+  -webkit-animation-name: pause-active;
+  -webkit-animation-duration: 1500ms;
+  -webkit-animation-iteration-count: infinite;
+}
+
+#control #cancel {
+  border: none;
+  font-size: 17px;
+  border-radius: 11px;
+  margin: 1.1em auto;
+  margin-bottom: 0.5em;
+  float: none;
+  background-color: transparent;
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#control #cancel:disabled {
+  color: #777;
+  cursor: default;
+  font-style: italic;
+}
+
+#control button:disabled, #control button:disabled:hover {
+  opacity: 0.5;
+  animation: none;
+  -webkit-animation: none;
+}

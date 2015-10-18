@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "creator": "techninja",
+    "target": "en-US",
+    "release": "0.9.5",
+    "basetype": "mode"
+  },
+  "info":{
+    "description": "Remote Print Mode: Push your drawings!",
+    "title": "Remote Print",
+    "detail": "Allows properly configured remote applications to send graphics to RoboPaint",
+    "word": "Remote"
+  },
+  "control": {
+    "title": "Remote Paint Control",
+    "subtitle": "Control"
+  },
+  "queue": {
+    "title": "Remote Paint Queue",
+    "name": "Name",
+    "status": "Status",
+    "added": "Timestamp",
+    "preview": "Preview",
+    "settings": "Settings",
+    "na": "None Given",
+    "itemStatus": {
+      "waiting": "Waiting",
+      "cancelled": "Cancelled",
+      "complete": "Complete",
+      "printing": "Printing"
+    }
+  },
+  "button": {
+    "ready": "Ready to print?",
+    "readytitle": "Enable this when you're ready to start processing the print queue.",
+    "noreset": "Don't reset readiness",
+    "noresettitle": "If enabled, readiness checkbox above will not be reset after a print, allows for immediate queue processing."
+  },
+  "status": {
+    "cancelled": "Remote printing spooling and printing cancelled."
+  }
+}

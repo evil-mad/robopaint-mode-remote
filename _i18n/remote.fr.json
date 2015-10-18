@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "release": "0.9.6",
+    "target": "fr",
+    "creator": "techninja via GoogleTranslate"
+  },
+  "info": {
+    "description": "Mode d'impression à distance: Poussez vos dessins!",
+    "title": "Impression à distance",
+    "word": "Éloigné"
+  },
+  "control": {
+    "title": "Contrôle à distance de peinture",
+    "subtitle": "Contrôle"
+  },
+  "queue": {
+    "title": "Peinture Remote Queue",
+    "name": "Nom",
+    "added": "Timestamp",
+    "preview": "Aperçu",
+    "status": "Statut",
+    "na": "Aucun tenu",
+    "itemStatus": {
+      "waiting": "Attendre",
+      "cancelled": "Annulé",
+      "complete": "Complète",
+      "printing": "Impression"
+    },
+    "settings": "Paramètres"
+  },
+  "button": {
+    "ready": "Prêt à imprimer?",
+    "noreset": "Ne pas réinitialiser préparation",
+    "readytitle": "Activer cette option lorsque vous êtes prêt à commencer le traitement de la file d'attente d'impression.",
+    "noresettitle": "Si elle est activée, la préparation case ci-dessus ne sera pas remise à zéro après une impression, permet un traitement de file d'attente immédiate."
+  },
+  "status": {
+    "cancelled": "Bobinage d'impression à distance et l'impression annulées."
+  }
+}
