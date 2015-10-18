@@ -15,6 +15,12 @@
     "title": "Remote Paint Control",
     "subtitle": "Control"
   },
+  "api": {
+    "disabled": "The SVG import API is currently disabled. Enable it in settings and then click the button in the RoboPaint GUI.",
+    "busy": "Cannot add to queue during ongoing print job.",
+    "queued": "Queued for printing...",
+    "wait": "Waiting for design from client..."
+  },
   "queue": {
     "title": "Remote Paint Queue",
     "name": "Name",

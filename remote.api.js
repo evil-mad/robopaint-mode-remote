@@ -138,7 +138,7 @@ robopaint.api.print.bindCreateEndpoints = function(){
 
     // Forbid change commands until printMode is enabled
     if (!robopaint.api.print.enabled && req.route.method != 'get') {
-      return [403, robopaint.t('remoteprint.api.disabled')];
+      return [403, robopaint.t('modes.remote.api.disabled')];
     }
 
     // Are we busy? Fill a quick var for reuse...
@@ -191,7 +191,7 @@ robopaint.api.print.bindCreateEndpoints = function(){
         endTime: null,
         secondsTaken: null,
         svg: req.body.svg,
-        printingStatus: robopaint.t('remoteprint.api.queued'),
+        printingStatus: robopaint.t('modes.remote.api.queued'),
         qid: queue.length,
         completionInterval: -1
       });
@@ -224,7 +224,7 @@ robopaint.api.print.bindCreateEndpoints = function(){
 
     // Forbid change commands until printMode is enabled
     if (!robopaint.api.print.enabled && req.route.method != 'get') {
-      return [403, robopaint.t('remoteprint.api.disabled')];
+      return [403, robopaint.t('modes.remote.api.disabled')];
     }
 
     if (!item){
