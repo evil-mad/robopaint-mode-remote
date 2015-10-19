@@ -158,7 +158,13 @@ function rebuildQueue() {
   $q.empty();
 
   // Move through each queue item and build the rows
-  _.each(queue, function(item){
+  var q = _.extend([], queue).reverse();
+  _.each(q, function(item){
+    // Only field referenced as a var, as we'll need to update it directly.
+    var $status = $('<td>')
+      .addClass('status')
+      .text(mode.t('queue.itemStatus.' + item.status));
+
     $('<tr>').append(
       $('<td>').addClass('id').text(item.qid+1),
 
@@ -167,8 +173,7 @@ function rebuildQueue() {
         $('<span>').attr('title', item.options.name).text(item.options.name)
       ),
 
-      $('<td>')
-      .addClass('status').text(mode.t('queue.itemStatus.' + item.status)),
+      $status,
 
       $('<td>').addClass('time').text(new Date(item.startTime).toTimeString()),
 
@@ -183,10 +188,12 @@ function rebuildQueue() {
       })())
     ).appendTo($q);
 
-    // Handy item function for updating its visible status after the fact
+    // Handy item function for updating its visible status after the fact.
+    // only takes valid queue item states, handles translation and item setting
+    // automatically.
     item.updateStatus = function(status) {
       item.status = status;
-      $q.find('tr:nth-of-type(' + (item.qid+1) + ') td.status').text(mode.t('queue.itemStatus.' + status));
+      $status.text(mode.t('queue.itemStatus.' + status));
     }
   });
 }
