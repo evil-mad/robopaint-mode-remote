@@ -128,7 +128,7 @@ function processQueueItem(qid) {
   $('#cancel').prop('disabled', false); // Enable the cancel print button
 
   // Fold the custom settings (if any) into RP current settings
-  if (queue[qid].options) {
+  if (queue[qid].options.settingsOverrides) {
     robopaint.settings = _.extend({}, originalSettings, queue[qid].options.settingsOverrides);
   } else {
     // Ensure settings are default to how they were originally if none passed.
@@ -136,7 +136,14 @@ function processQueueItem(qid) {
   }
 
   paper.resetAll();
-  paper.canvas.loadSVG(queue[qid].svg);
+  paper.canvas.loadSVG(queue[qid].svg, true);
+
+  // SVG is imported as a single group, and as the layer is clear, it should be
+  // the only thing there. Resize it to fit.
+  if (!queue[qid].options.noresize) {
+    paper.canvas.mainLayer.children[0].fitBounds(paper.view.bounds);
+  }
+
   paper.renderMotionPaths(function(){
     paper.utils.autoPaint(paper.canvas.actionLayer);
     // Callback for when this completes is handled via cncserver autoPaintComplete
