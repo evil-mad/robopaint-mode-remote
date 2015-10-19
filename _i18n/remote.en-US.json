@@ -19,7 +19,9 @@
     "disabled": "The SVG import API is currently disabled. Enable it in settings and then click the button in the RoboPaint GUI.",
     "busy": "Cannot add to queue during ongoing print job.",
     "queued": "Queued for printing...",
-    "wait": "Waiting for design from client..."
+    "wait": "Waiting for design from client...",
+    "readyset": "Ready state set to: __state__",
+    "readyfail": "Ready state not set, Mode not open or available"
   },
   "queue": {
     "title": "Remote Paint Queue",

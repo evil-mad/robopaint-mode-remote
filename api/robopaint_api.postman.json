@@ -33,6 +33,20 @@
         },
         {
             "collectionId": "9e1a0ec1-486d-f0e5-3452-298270410d59",
+            "id": "8da7b2a9-2196-a39b-b7d7-f564fb8b5b3c",
+            "name": "Print: Force Ready State",
+            "description": "",
+            "url": "http://{{cncserver-host}}:{{cncserver-port}}/robopaint/v1/print",
+            "method": "POST",
+            "headers": "Content-Type: application/json\n",
+            "data": "{\n    \"ready\": true\n}",
+            "dataMode": "raw",
+            "timestamp": 0,
+            "version": 2,
+            "time": 1445232349734
+        },
+        {
+            "collectionId": "9e1a0ec1-486d-f0e5-3452-298270410d59",
             "id": "d281f233-3dd3-854c-1faa-3bb801c6f782",
             "name": "Print: Check Queue Item Status",
             "description": "Get's the full queue item status",

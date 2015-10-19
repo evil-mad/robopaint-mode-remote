@@ -208,6 +208,11 @@ ipc.on('remoteprint', function(args) {
       // We don't check if we should start the queue here as this only happens
       // at the start, and we always default to NOT ready at the start.
       break;
+    case 'forceReady': // The new ready state (if not printing)
+      if (readyToPrint != args[1] && !busyPrinting) {
+        $('#ready').click();
+      }
+      break;
   };
 });
 

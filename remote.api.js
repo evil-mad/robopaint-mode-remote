@@ -166,6 +166,17 @@ robopaint.api.print.bindCreateEndpoints = function(){
       }};
     } else if (req.route.method == 'post') { // POST new print item
       var options = req.body.options;
+
+      // Allow for the ready state to be forced (only works if the mode opened)
+      if (!options && typeof req.body.ready !== 'undefined') {
+        if (appMode === 'remote') {
+          robopaint.api.print.pushToMode('forceReady', !!req.body.ready);
+          return [200, robopaint.t('modes.remote.api.readyset', {state: !!req.body.ready})];
+        } else {
+          return [503, robopaint.t('modes.remote.api.readyfail')];
+        }
+      }
+
       var msg = '';
 
       // Basic sanity check incoming content

@@ -143,9 +143,27 @@ Content-Type: application/json; charset=UTF-8
 
 ```
 
+#### Ready state override:
+You can also force the ready state of the operator by sending only
+"ready: [true/false]", see example below. Note the mode _must_ be enabled, and
+not actively printing, or the request will be ignored/denied.
+
+#### Request Example
+```javascript
+POST /robopaint/v1/print
+Content-Type: application/json; charset=UTF-8
+
+{
+    "ready": true    // You can force the ready state to true or false.
+}
+
+```
+
+
 ##### Usage Notes
  * As noted, `svg`, `options`, and `options.name` are all required, and the API
-will deny any request that doesn't have these
+will deny any request that doesn't have these, unless you're only setting the
+ready state.
  * The SVG field should be the full XML from an SVG file, escaped properly, or
 JSON encoding will be broken. Most JSON formatters handle this automatically.
  * The SVG format errors come from one of three places: the XML DOM parser,
