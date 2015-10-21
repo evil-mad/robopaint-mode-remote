@@ -1,6 +1,6 @@
 {
   "name": "robopaint-mode-remote",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "type": "robopaint_mode",
   "main": "remote.js",
   "author": "techninja",
