@@ -6,10 +6,9 @@
     "basetype": "mode"
   },
   "info":{
-    "description": "Remote Print Mode: Push your drawings!",
-    "title": "Remote Print",
-    "detail": "Allows properly configured remote applications to send graphics to RoboPaint",
-    "word": "Remote"
+    "name": "Remote Print Management",
+    "use": "Manage Remote Printing",
+    "detail": "Properly configured remote applications can send graphics to RoboPaint for automatic printing, only with this mode open can they be run."
   },
   "control": {
     "title": "Remote Paint Control",
