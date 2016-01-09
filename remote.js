@@ -55,6 +55,10 @@ mode.pageInitReady = function () {
 function paperLoadedInit() {
   // With Paper ready, send a single up to fill values for buffer & pen.
   mode.run('up');
+
+  // Use mode settings management on all "managed" class items. This
+  // saves/loads settings from/into the elements on change/init.
+  mode.settings.$manage('.managed');
 }
 
 
