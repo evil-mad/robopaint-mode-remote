@@ -209,7 +209,7 @@ function sendToAPI(type, data) {
 }
 
 // IPC events from the API on the RoboPaint side.
-ipc.on('remoteprint', function(args) {
+ipc.on('remoteprint', function(event, args) {
   switch (args[0]) {
     case 'itemAdded': // Just the queue item that was added.
       queue.push(args[1]);
@@ -231,7 +231,7 @@ ipc.on('remoteprint', function(args) {
         $('#ready').click();
       }
       break;
-  };
+  }
 });
 
 // Catch the settings update so we're using the most up to date original Settings
