@@ -19,7 +19,7 @@ print status of the bot from a server plugged into the local computer, at the de
 port of `4242`. Your host and port may be different, so they're excluded.
 
 If you want to test any of these, try out
-[Postman for Google Chrome](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm).
+[Postman for Google Chrome](https://www.getpostman.com/apps).
 It allows for easy testing of any RESTful HTTP method to even remote servers.
 
 ![f1a930d0641920f074aeb32ebc512408](https://f.cloud.github.com/assets/320747/920613/894669a2-fee1-11e2-8349-dc6ad8cd805d.png)
