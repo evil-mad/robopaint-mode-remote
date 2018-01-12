@@ -70,7 +70,8 @@ Content-Type: application/json; charset=UTF-8
         {
             "uri": "/robopaint/v1/print/0",     // URI of item detail resource
             "name": "Blue Star",                // Name given to item
-            "status": "printing"                // Status of individual item
+            "status": "printing",               // Status of individual item
+            "percentComplete": 42               // Percent of operation complete
         },
     ]
 }
@@ -129,6 +130,7 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "status": "verified and added to queue",
+    "id": 3,                                      // Queue item index/id
     "uri": "/robopaint/v1/print/3",               // URI the item can be seen at
     "item": {
         ...                                       // Original item payload

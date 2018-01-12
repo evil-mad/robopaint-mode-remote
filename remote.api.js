@@ -158,7 +158,8 @@ robopaint.api.print.bindCreateEndpoints = function(){
             items.push({
               uri: '/robopaint/v1/print/' + id,
               name: item.options.name,
-              status: item.status
+              status: item.status,
+              percentComplete: item.percentComplete
             });
           });
           return items;
@@ -215,6 +216,7 @@ robopaint.api.print.bindCreateEndpoints = function(){
         code: 201,
         body: {
           status: 'verified and added to queue',
+          id: (queue.length - 1),
           uri: '/robopaint/v1/print/' + (queue.length - 1),
           item: queue[queue.length - 1]
         }
