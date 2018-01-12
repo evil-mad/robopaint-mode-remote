@@ -217,6 +217,9 @@ ipc.on('remoteprint', function(event, args) {
       break;
     case 'itemCancelled': // Just the queue item ID that was cancelled.
       queue[args[1]].updateStatus('cancelled');
+      paper.resetAll(); // Cleanup paper portions
+      mode.onCallbackEvent('autoPaintComplete');
+      mode.fullCancel(mode.t('status.cancelled'));
       checkStartQueue(); // Check if we should start the queue.
       break;
     case 'fullQueue': // A full queue object
