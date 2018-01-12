@@ -3,6 +3,8 @@
  */
 "use strict";
 
+/* globals $, robopaint, mode, i18n, paper, ipc */
+
 var actualPen = {}; // Hold onto the latest actualPen object from updates.
 var buffer = {};
 var t = i18n.t; // The mother of all shortcuts
@@ -48,8 +50,7 @@ mode.pageInitReady = function () {
 
   // Bug the API to give us the full queue whenever it gets around to it.
   sendToAPI('fullQueue');
-}
-
+};
 
 // Trigger load init resize only after paper has called this function.
 function paperLoadedInit() {
@@ -60,7 +61,6 @@ function paperLoadedInit() {
   // saves/loads settings from/into the elements on change/init.
   mode.settings.$manage('.managed');
 }
-
 
 // Catch CNCServer buffered callbacks
 mode.onCallbackEvent = function(name) {
@@ -93,7 +93,6 @@ mode.onCallbackEvent = function(name) {
       break;
   }
 };
-
 
 // Run at either ready trigger or new item (with ready), checks the queue and
 // starts running it if applicable.
@@ -227,14 +226,14 @@ ipc.on('remoteprint', function(event, args) {
       // at the start, and we always default to NOT ready at the start.
       break;
     case 'forceReady': // The new ready state (if not printing)
-      if (readyToPrint != args[1] && !busyPrinting) {
+      if (readyToPrint !== args[1] && !busyPrinting) {
         $('#ready').click();
       }
       break;
   }
 });
 
-// Catch the settings update so we're using the most up to date original Settings
+// Catch the update so we're using the most up to date original global settings
 ipc.on('settingsUpdate', function(){
   originalSettings = robopaint.utils.getSettings();
 });
@@ -269,12 +268,12 @@ mode.bindControls = function(){
     sendToAPI(readyToPrint ? 'ready' : 'notReady');
 
     checkStartQueue(); // Check if we should start the queue.
-  })
+  });
 
   // Bind change/var management for noreset
   $('#noreset').change(function(){
     noResetReady = $(this).is(':checked');
-  })
+  });
 
   // Bind pause click and functionality
   $('#pause').click(function() {
@@ -348,7 +347,7 @@ mode.bindControls = function(){
       ['status', t("status.unlocked")]
     ]);
   });
-}
+};
 
 // Warn the user on close about cancelling jobs.
 mode.onClose = function(callback) {
@@ -363,7 +362,7 @@ mode.onClose = function(callback) {
   } else {
     callback(); // Close, as we have nothing the user is waiting on.
   }
-}
+};
 
 // Actual pen update event
 mode.onPenUpdate = function(botPen){
@@ -377,9 +376,9 @@ mode.onPenUpdate = function(botPen){
     key = 'common.action.brush.lower';
   }
   $('#pen').text(t(key));
-}
+};
 
 // An abbreviated buffer update event, contains paused/not paused & length.
 mode.onBufferUpdate = function(b) {
   buffer = b;
-}
+};
