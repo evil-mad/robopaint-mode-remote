@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RoboPaint Remote Example App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="robopaint.client.api.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  </head>
+  <body>
+
+    <section class="hero is-dark is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">RoboPaint Remote Example Control Client</h1>
+          <p class="subtitle">For interfacing with a computer running RoboPaint in Remote Print Mode.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section columns is-multiline">
+      <section class="column is-half">
+        <label class="label">Location of remote print server:</label>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label" for="ipaddr">Hostname</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control has-icons-left">
+                <input class="input" type="text" id="ipaddr" value="" size="15">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-globe"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label" for="port">Port</label>
+          </div>
+          <div class="field-body">
+            <p class="control has-icons-left">
+              <input class="input" type="number" id="port" value="4242" size="5">
+              <span class="icon is-small is-left">
+                <i class="fa fa-plug"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="column is-half">
+        <label class="label">Select an SVG file:</label>
+        <div class="field has-addons has-addons">
+          <div class="control">
+            <input class="input" type="file" id="svgfile">
+          </div>
+          <div class="control">
+            <button id="plotstart" class="button is-primary" disabled="disabled">
+              <span>Plot Selected File</span>
+              <span class="icon is-small">
+                <i class="fa fa-print"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-success" id="forceready">Force Ready State</button>
+          </p>
+          <p class="control">
+            <button id="plotend" class="button is-light is-danger is-outlined">CANCEL</button>
+          </p>
+        </div>
+      </section>
+
+      <section class="column">
+        <div class="box">
+          <label class="subtitle is-4 is-bold">Current Status</label>
+          <progress class="progress is-primary is-large" value="0" max="100"></progress>
+          <div class="subtitle has-text-centered has-text-dark" id="status"></div>
+        </div>
+      </section>
+    </div>
+
+
+
+    <script type="text/javascript">
+      var svgText = ""; // Placeholder for SVG data read from file.
+      var currentQueueID = 0;
+      //var robopaint = {api: {}}; // Placeholder global.
+
+      // jQuery Bind to file field change. Load the text of the file directly.
+      $('#svgfile').change(function(e) {
+        // If the user selected a file, enable the plot button.
+        $('#plotstart').prop('disabled', this.files.length == 0);
+
+        loadAsText(this.files[0], function(fileContents){
+          svgText = fileContents;
+        });
+      });
+
+      // Setup default host/port to this one.
+      $('#ipaddr').val(location.hostname);
+      $('#port').val(location.port);
+
+      // jQuery bind to domain/port input change, set initial.
+      $('#ipaddr, #port').change(function() {
+        robopaint.api.server = {
+          domain: $('#ipaddr').val(),
+          port: $('#port').val(),
+          protocol: 'http',
+          version: '1'
+        }
+      });
+
+      // jQuery bind to force ready state button click.
+      $('#forceready').click(function(e) {
+        robopaint.api.print.setReady(function(data) {
+          console.log(data);
+        });
+      });
+
+      // jQuery bind to plot button click, start the plotting! Muwahahahah!!!
+      $('#plotstart').click(function(e) {
+        var file = $('#svgfile')[0].files[0]; // The DOM API file object.
+
+        // Pass the details to the API wrapper function...
+        robopaint.api.print.queueSVG(
+          svgText, // The full text of the SVG file (loaded above)
+          { // The "options" key object for the post request.
+            name: file.name,
+            settingsOverrides: {
+              fillType: 'zigsmooth'
+            }
+          },
+          function (data, data2) { // This function will be called when the request finishes.
+            console.log(data, data2);
+            if (data.item) {
+              currentQueueID = data.id;
+            }
+          }
+        );
+      });
+
+      // jQuery bind to PlotEnd/cancel print job.
+      $('#plotend').click(function() {
+        robopaint.api.print.deleteQueueItem(currentQueueID, function(data) {
+          console.log(data);
+        });
+      });
+
+      // When the page finishes loading...
+      $(function() {
+        // Trigger initial change for server settings.
+        $('#ipaddr').change();
+
+        // Setup poller to check on status of the current queue item.
+        setInterval(function() {
+          robopaint.api.print.status(function(d) {
+            if (d.queue) {
+              if (d.queue[currentQueueID]) {
+                var item = d.queue[currentQueueID];
+                $('progress')
+                .val(item.percentComplete)
+                .text(item.percentComplete + '% complete');
+                $('#status').text(item.name + ' - ' + item.status);
+              }
+            }
+          });
+        }, 2000);
+      });
+
+      // Helper: Load a file object as text directly, content passed to callback.
+      function loadAsText(file, cb) {
+        var reader = new FileReader();
+
+        reader.onload = function(loadedEvent) {
+          // Result contains loaded file, passed to callback.
+          cb(loadedEvent.target.result);
+        }
+
+        // Reader is Async, onload will be called above when done reading.
+        reader.readAsText(file);
+      }
+    </script>
+
+  </body>
+</html>

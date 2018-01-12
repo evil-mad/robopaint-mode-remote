@@ -262,15 +262,13 @@ robopaint.api.print.bindCreateEndpoints = function(){
     }
   });
 
-
   /**
-   * `robopaint/remote`
-   * Example HTML returning endpoint for resources/api/example.remotepaint.html
+   * `/robopaint/remote/`
+   * Static HTML endpoint for resources/api/
    */
-  cncserver.createServerEndpoint('/robopaint/remote', function(req, res) {
-    // TODO: This really doesn't work as the headers are wrong.
-    res.sendfile(robopaint.modes.remote.root + 'api/example.remotepaint.html');
-    return true;
-  });
-}
+  cncserver.createStaticEndpoint(
+    '/robopaint/remote/',
+    path.dirname(require.resolve('robopaint-mode-remote')) + '/api'
+  );
+};
 robopaint.api.print.bindCreateEndpoints();
