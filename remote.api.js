@@ -5,6 +5,8 @@
  * APIs are undocumented wild-west territory.
  */
 
+/* globals $, robopaint, cncserver, appMode, window */
+
 // All RoboPaint API state vars should be stored here
 if (!robopaint.api) robopaint.api = {};
 
